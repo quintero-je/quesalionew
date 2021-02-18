@@ -1,0 +1,231 @@
+<div class="breadcrumbs" id="breadcrumbs">
+	<script type="text/javascript">
+		try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+	</script>
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home home-icon"></i>
+			<a href="/">Home</a>
+		</li>
+		<li class="active">Dashboard</li>
+	</ul><!-- .breadcrumb --> 
+</div>
+
+<div class="page-content">
+    <div class="row">
+        <div class="col-xs-12">
+            
+            <div class="table-header">
+                Listado de tareas Programadas {{global.playButton}}
+            </div>
+
+            <div class="table-responsive">
+                <table id="sample-table-2" class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Formato Cron</th>
+                            <th class="hidden-480">Descripci&oacute;n</th>
+                            <th class="hidden-480">Status</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    {{#each crons}}
+                        <tr>
+
+                            <td>
+                                {{name}}
+                            </td>
+                            <td>
+                                {{#if cron}}
+                                {{cron}}
+                                {{else}}
+                                {{on}} - {{off}}
+                                {{/if}}
+                                </td>
+                            <td>{{description}}</td>
+
+                            <td class="hidden-480">
+                                <span class="label label-sm label-warning">{{status}}</span>
+                            </td>
+
+                            <td>
+                                <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+                                   
+                                    <a class="green"  href="#modal-form{{_id}}" role="button" class="blue" data-toggle="modal">
+                                        <i class="icon-pencil bigger-130"></i>
+                                    </a>
+
+                                </div>
+
+                                <div class="visible-xs visible-sm hidden-md hidden-lg">
+                                    <div class="inline position-relative">
+                                        <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
+                                                <i class="icon-caret-down icon-only bigger-120"></i>
+                                            </button>
+
+                                        <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
+                                            <li>
+                                                  <a class="green"  href="#modal-form{{_id}}" role="button" class="blue" data-toggle="modal">
+                                        <i class="icon-pencil bigger-130"></i>
+                                    </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+{{#each crons}}
+<div id="modal-form{{_id}}" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="blue bigger">Actualizar el Cron Job <strong>{{name}}</strong></h4>
+            </div>
+
+            <div class="modal-body overflow-visible">
+                <div class="row">
+
+                    
+                    <div class="col-xs-12 ">
+                        <p>{{description}}</p>
+                    <form action="" id="cronUpdate{{name}}" method="POST">
+                        {{#if cron}}
+                        <div class="col-xs-12">
+                            <h3 class="header smaller lighter blue">Tareas Programadas</h3>
+                            <p>
+                                Para alterar los horarios de las tareas programadas, sírvase del siguiente ejemplo:
+                            </p>
+                            <code>
+                        
+                            *    *    *    *    *    *<br>
+                            ┬    ┬    ┬    ┬    ┬    ┬<br>
+                            │    │    │    │    │    │<br>
+                            │    │    │    │    │    └ d&iacute;a de la semana (0 - 7) (0 or 7 es domingo)<br>
+                            │    │    │    │    └───── mes (1 - 12)<br>
+                            │    │    │    └────────── d&iacute;a del mes (1 - 31)<br>
+                            │    │    └─────────────── hora (0 - 23)<br>
+                            │    └──────────────────── minuto (0 - 59)<br>
+                            └───────────────────────── segundo (0 - 59, OPTIONAL)<br>
+                            </code>
+                            <p>Cada asterisco representa una posición seguido por un espacio. </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-field-username">Formato Cron</label>
+                            <div>
+                                <input class="input-large" name="cron" type="text" id="form-field-username" placeholder="Username" value="{{cron}}" />
+                            </div>
+                        </div>
+
+                        {{else}}
+                        <p>
+                        Para Alterar el formato de comienzo y final de la tarea: siga el siguiente ejemplo:<br>
+                        12:00 -> <br>
+                        Donde 12 es la hora (Obligatorio formato de 24 horas) <br>
+                        el separador debe ser siempre : (dos puntos) <br>
+                        y los minutos en el segundo renglon (entre 00 y 59)
+                        </p>
+                    
+                        <div class="form-group">
+                            <label for="form-field-username">Hora de inicio</label>
+                            <div>
+                                <input class="input-large" name="on" type="text" id="form-field-username" placeholder="Ejemplo: 12:00" value="{{on}}" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="form-field-username">Hora de fin</label>
+                            <div>
+                                <input class="input-large" name="off" type="text" id="form-field-username" placeholder="Ejemplo: 12:00" value="{{off}}" />
+                            </div>
+                        </div>
+
+                        {{/if}}
+
+                        <input type="text" hidden="hidden" name="name" value="{{name}}">
+                        </form>
+                        <div class="space-4"></div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-sm" data-dismiss="modal">
+                    <i class="icon-remove"></i>
+                    Cancelar
+                </button>
+
+                <button class="btn btn-sm btn-primary" onclick="updateCron('{{name}}')" data-dismiss="modal">
+                    <i class="icon-ok"></i>
+                    Salvar
+                </button>
+            </div>
+        </div>
+    </div>
+</div><!-- PAGE CONTENT ENDS -->
+{{/each}}
+
+</div><!-- /.page-content -->
+
+<script>
+    function serializeForm(form) {
+    let miForm = document.getElementById(form);
+    let formData = new FormData(miForm);
+    let jsonData = {};
+    for (let [k, v] of formData) {
+        jsonData[k] = v;
+    }
+    return jsonData
+}
+
+function xData(url, data, callback, options = false) {
+    let async = true, user = '', psw = '', type = "application/json", method = "POST";
+    if (options) {
+        [async, user, psw, type, method] = options
+    };
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            switch (this.status) {
+                case 200:
+                    this.responseText == "[]" || this.responseText == "" ? callback({ "error": "No se encontro registro" }) : callback(this.response);
+                    break;
+                case 403:
+                    alert('Usted no esta autorizado para ejecutar esta accion.')
+                    break;
+                case 404:
+                    alert('No pudimos encontrar su solicitud, por favor intente de nuevo')
+                    break;
+                default:
+                    alert('No hemos podido conectar con el servidor, por favor comuniquese con el administrador')
+                    break;
+            }
+        }
+    };
+    xhttp.open(method, url, async, user, psw);
+    xhttp.setRequestHeader("Content-Type", type);
+    xhttp.send(data);
+};
+
+function updateCron(f) {
+    let data = serializeForm("cronUpdate"+f);
+    console.log(data)
+    xData("/admin/cron/update", JSON.stringify(data ), function(data) {
+       window.location.reload(); 
+       console.log(data)
+    });
+
+}
+</script>

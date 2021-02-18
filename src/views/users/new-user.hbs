@@ -1,0 +1,110 @@
+{{> errors }}
+<div class="col-md-4 mx-auto">
+<!-- Material form login -->
+<div class="card">
+
+  <h5 class="card-header info-color white-text text-center py-4">
+    <strong>Crear Usuario Administrativo</strong>
+  </h5>
+
+  <!--Card content-->
+  <div class="card-body px-lg-5 pt-0">
+
+    <!-- Form -->
+    <form class="text-center" enctype="multipart/form-data" style="color: #757575;" action="/users/new-user" method="POST">
+
+      <!-- name -->
+      <div class="md-form">
+        <input type="text" id="materialLoginFormName" name="name" class="form-control" autofocus>
+        <label for="materialLoginFormName">Nombre</label>
+      </div>
+
+      {{!-- LastName1 --}}
+      <div class="md-form">
+        <input type="text" id="materialLoginFormLastName1" name="lastname1" class="form-control">
+        <label for="materialLoginFormLastName1">Primer Apellido</label>
+      </div>
+
+      {{!-- LastName2 --}}
+      <div class="md-form">
+        <input type="text" id="materialLoginFormLastName2" name="lastname2" class="form-control">
+        <label for="materialLoginFormLastName2">Segundo Apellido</label>
+      </div>
+
+      {{!-- Document --}}
+      <div class="md-form">
+        <input type="text" id="materialLoginFormDocument" name="document" class="form-control">
+        <label for="materialLoginFormDocument">Documento</label>
+      </div>
+
+      {{!-- email --}}
+      <div class="md-form">
+        <input type="email" id="materialLoginFormEmail" name="email" class="form-control">
+        <label for="materialLoginFormEmail">Email</label>
+      </div>
+
+      {{!-- idEmpleado --}}
+      <div class="md-form">
+        <input type="text" id="materialLoginFormIdB" name="id_b" class="form-control">
+        <label for="materialLoginFormIdB">Id Empleado</label>
+      </div>
+
+      {{!-- phone --}}
+      <div class="md-form">
+        <input type="number" id="materialLoginPhone" name="phone" class="form-control">
+        <label for="materialLoginPhone">Tel&eacute;fono</label>
+      </div>
+
+       {{!-- movil --}}
+      <div class="md-form">
+        <input type="number" id="materialLoginMovil" name="movil" class="form-control">
+        <label for="materialLoginMovil">M&oacute;vil</label>
+      </div>
+
+      <div class="md-form">
+        <input id="tags" name="groups" type="text" 
+        class="" data-role="tagsinput" value="jQuery,Script,Net">
+        <label for="tags">Grupos</label>
+      </div>
+
+      {{!-- Brand --}}
+      <select class="mdb-select md-form" name="brands">
+        <option value="" disabled selected>Escoja la Empresa</option>
+        {{#each brands}}
+          <option value="{{id}}">{{name}}</option>
+        {{/each}}
+      </select>
+
+      <!-- Description-->
+      <div class="md-form">
+        <textarea id="description" name="description" class="md-textarea form-control"></textarea>
+        <label for="description">Descripci&oacute;n</label>
+      </div>
+
+
+      <div class="file-field">
+        <div class="mb-4">
+          <img  id="preview-image" 
+            src="/uploads/placeholder-avatar.jpg"
+            class="rounded-circle z-depth-1-half avatar-pic" 
+            alt="logo">
+        </div>
+        <div class="d-flex justify-content-center">
+            <button  class="btn btn-mdb-color btn-rounded float-left" id="upload-dialog" type="button">Foto</button>
+            <input type="file" name="image" id="image-file"  style="display:none" />
+        </div>
+      </div>
+    <hr>
+      <!-- Sign in button -->
+      <button class="btn btn-outline-info waves-effect" type="submit">Crear</button>
+
+    </form>
+    <!-- Form -->
+
+  </div>
+
+</div>
+<!-- Material form login -->
+
+</div>
+

@@ -1,0 +1,159 @@
+
+<div class="row">
+<div class="col">
+<!-- Table with panel -->
+<div class="card card-cascade narrower">
+
+  <!--Card image-->
+  <div
+    class="view view-cascade gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+
+   {{!--  <div>
+      <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
+        <i class="fa fa-th-large mt-0"></i>
+      </button>
+      <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
+        <i class="fa fa-columns mt-0"></i>
+      </button>
+    </div> --}}
+
+    <a href="" class="white-text mx-3">Empleados</a>
+
+    <div>
+ {{!--      <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
+        <i class="fa fa-pencil mt-0"></i>
+      </button>
+      <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2">
+        <i class="fa fa-trash mt-0"></i>
+      </button> --}}
+      <a href="/users/add" class="btn btn-outline-white btn-rounded btn-sm px-2">
+        <i class="fa fa-plus-circle mt-0"></i> Nuevo Empleado
+      </a>
+      
+      <a href="/users/justifications" class="btn btn-outline-white btn-rounded btn-sm px-2">
+        <i class="fa fa-check-circle mt-0"></i> Justificaciones
+      </a>
+    </div>
+
+  </div>
+  <!--/Card image-->
+
+  <div class="px-4">
+
+    <div class="table-wrapper">
+      <!--Table-->
+      <table class="table table-hover mb-0">
+
+        <!--Table head-->
+        <thead>
+          <tr>
+            {{!-- <th>
+              <input class="form-check-input" type="checkbox" id="checkbox">
+              <label class="form-check-label" for="checkbox" class="mr-2 label-table"></label>
+            </th> --}}
+            <th class="th-lg">
+              <a>Logo
+                <i class="fa fa-sort ml-1"></i>
+              </a>
+            </th>
+            <th class="th-lg">
+              <a href="">Nombre
+                <i class="fa fa-sort ml-1"></i>
+              </a>
+            </th>
+            <th class="th-lg">
+              <a href="">Email
+                <i class="fa fa-sort ml-1"></i>
+              </a>
+            </th>
+            <th class="th-lg">
+              <a href="">Id Empleado
+                <i class="fa fa-sort ml-1"></i>
+              </a>
+            </th>
+            <th class="th-lg">
+              <a href="">Acciones
+                <i class="fa fa-sort ml-1"></i>
+              </a>
+            </th>
+          </tr>
+        </thead>
+        <!--Table head--> 
+
+        <!--Table body-->
+        <tbody>
+          {{#each users}}
+            <tr>
+          {{!-- <th scope="row">
+                <input class="form-check-input" type="checkbox" id="checkbox1">
+                <label class="form-check-label" for="checkbox1" class="label-table"></label>
+              </th> --}}
+              <td>
+                {{#if img}}
+                  <a class="nav-link p-0" href="#">
+                    <img src="{{img}}" class="rounded-circle z-depth-0"
+                      alt="avatar image" height="35">
+                  </a> 
+                  {{else}}
+                  <a class="btn-floating btn-primary btn-sm"><i class="fa" id="LogoBrand"></i></a>
+                  <script>var cap = "{{name}}"; var ini = cap.charAt(0); var x = document.getElementById('LogoBrand'); x.innerHTML = ini;</script>
+                {{/if}}
+              </td>
+              <td>{{name}} {{lastname1}}</td>
+              <td>{{email}}</td>
+              <td>{{id_b}}</td>
+              <td>
+                <a href="/users/edit/{{_id}}" class="material-tooltip-main btn-floating btn-sm btn-secondary" 
+                    data-toggle="tooltip"
+                    title="Editar" class="">
+                      <i class="fa fa-pencil"></i>
+                </a>
+                <a href="/users/show/{{_id}}" class="btn-floating btn-sm btn-secondary"><i class="fa fa-eye"></i></a>
+                <a href='#'  class="btn-floating btn-sm btn-secondary" data-toggle="modal" data-target="#deleteAlertModal" data-action="/users/delete/{{id}}?_method=DELETE" data-name="{{name}}" >
+                  <i class="fa fa-trash"></i>
+                </a>
+              </td>
+            </tr>
+          {{/each}}
+          
+        </tbody>
+        <!--Table body-->
+      </table>
+      <!--Table-->
+    </div>
+
+  </div>
+
+</div>
+<!-- Table with panel -->
+{{users}}
+
+</div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteAlertModal" tabindex="-1" role="dialog" aria-labelledby="deleteAlertModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteAlertModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="text-danger" id="alertDanger"></p>
+      </div>
+      <div class="modal-footer">
+        <button  class="btn btn-danger" onclick="document.getElementById('deleteForm').submit();return false;">Eliminar</button>
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Cancelar</button>
+        <form id="deleteForm" action=""  method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+        </form>
+          
+      </div>
+    </div>
+  </div>
+</div>

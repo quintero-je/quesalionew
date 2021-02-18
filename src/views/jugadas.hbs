@@ -1,0 +1,112 @@
+<div class="no-pad-bot" id="index-banner">
+    <div class="container">
+        <div class="indigo darken-4 a54">
+            <a href="/" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons a55">arrow_back</i>  </a>
+            <span class="a56">Nocturna 21:00Hs</span>
+        </div>
+        <div class="center">
+            <p class="white-text a76">🌃 HOY En la Quiniela Ciudad - Nocturna.<br>El mayor puntaje recibe $1000 vía MercadoPago 💰</p>
+            <p class="a110">Hace clic sobre el número para ver las jugadas 👀</p>
+            <div class="row">
+                <div class="col s12">
+                    <ul class="collection a60">
+                        <h5 class="a61">🔥 LOS MAS JUGADOS
+                            <p class="a62">EN VIVO - {{#ifCond numbers.players '==' 1}} {{numbers.players}} Jugador{{else}}{{numbers.players}} Jugadores{{/ifCond}}</p>
+                        </h5>
+                        {{#each numbers}}
+                        {{#ifCond number '>' 0}}
+                        <a class="modal-trigger" href="#modal-{{number}}">
+                            <li class="collection-item avatar a75">
+                                <img src="/img/emoticons/general_{{number}}.png" alt="" class="circle a73">
+                                <p class="title a63">{{number}} - {{meaning}}</p>
+                                <p class="x playersNum"  data-players-num="{{#ArrCount users}}{{/ArrCount}}"> </p>
+                                <p> </p>
+                                <div class="progress">
+                                    <div class="determinate" style="width: 40%"></div>
+                                </div>
+                            </li>
+                        </a>
+                        {{/ifCond}}
+                        {{/each}}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#each numbers}}
+    {{#ifCond number '>' 0}}
+    <div id="modal-{{number}}" class="modal a34 top-cero">
+        <div class="modal-content indigo darken-4" >
+            <div class="modal-footer indigo darken-4 a41">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons a42">arrow_back</i></a>
+                <span class="a43">Jugadas al {{number}}</span>
+            </div>
+            {{#each users}}
+            <div class="a90">
+                <p class="a91 center">
+                    <span class="a97 center">👑 PREMIUM</span>
+                    <span class="a112">Puesto #1</span>
+                    <img src="{{playerPic}}" class="circle a73 a92 a96" alt="{{playerName}}">
+                    <span class="a93 purple-text">⭐ {{playerName}}</span>
+                    <br>
+                    <span class="a95 datePlays" data-date="{{plays.[1].date}}">
+                        {{#if plays.[1].date}}
+                        {{plays.[1].date}}
+                        {{else}}
+                        {{plays.[0].date}}
+                        {{/if}}
+                        </span>
+                    <br>
+                </p>
+                <div class="row">
+                    <div class="col s12">
+                        <p class="a93 center">NOCTURNA</p>
+                        <table class="centered a94">
+                            <thead>
+                                <tr>
+                                    <th>Número</th>
+                                    <th>Quiniela</th>
+                                    <th>Importe</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each plays}}
+                                <tr>
+                                    <td>{{numero}}</td>
+                                    <td>Ciudad</td>
+                                    <td>{{importe}} <img src="./img/monedas.png" class="a51">
+                                    </td>
+                                </tr>
+                                {{/each}}
+                                <tr>
+                                    <td>Total</td>
+                                    <td>-------------</td>
+                                    <td>{{#TotalBet plays}}{{/TotalBet}} 
+                                        <img src="./img/monedas.png" class="a51">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    {{/ifCond}}
+{{/each}}
+<script>
+    let players = document.getElementsByClassName('playersNum');
+    for(let i =0; players.length; i++){
+        let num = players[i].getAttribute('data-players-num');
+        if(Number(num)>1){
+            players[i].innerHTML= num+ ' Jugadores'
+        }else{
+            players[i].innerHTML= num+ ' Jugador'
+        }
+    }
+</script>

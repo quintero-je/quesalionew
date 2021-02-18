@@ -1,0 +1,858 @@
+
+    
+    <div class="navbar-fixed">
+        <nav class="indigo darken-3">
+            <ul id="slide-out" class="sidenav indigo darken-3">
+                <li>
+                    <div class="user-view">
+                        <div class="background">
+
+                        </div>
+                        <a href="#user"><img id="userProfile[2]" class="profilePicture circle" src="/img/user-avatar-contact-portfolio-personal-portrait-profile-6-5623.png"></a>
+                        <a href="#name"><span class="white-text name"></span></a>
+                        <a href="#email" ><span class="white-text">Inicia sesión con Facebook </span></a>
+                        <a href="#email"><span class="white-text email">Plan Gratuito: 100 créditos diarios</span></a>
+                    </div> 
+                </li>
+            </ul>
+            <a id="triggerModal10" href="#modal10" class="sidenav-trigger modal-trigger"><img id="userProfile[1]" class="profilePicture" 
+          src="{{#if userPicture}}{{userPicture}}{{else}}/img/user-avatar-contact-portfolio-personal-portrait-profile-6-5623.png{{/if}}" 
+         
+            style="width: 30px; height: 30px;  border-radius: 100%; margin-top: 14px;"></a>
+
+            <div class="nav-wrapper white-text a1">
+
+
+                <a href="/" class="brand-logo white-text">¿Qué Salió?</a>
+
+            </div>
+            <div class="row indigo darken-3">
+                {{#if userId}}
+                <div class=" white-text col s4 center"><a class="waves-effect waves-light btn modal-trigger a2" href="#modal4">${{userSaldo}}<img src="./img/plata.png" class="a3"></a></div>
+                <div class=" white-text col s4 center"><a class="waves-effect waves-light btn modal-trigger a4" href="#modal5">
+                    <img src="https://image.flaticon.com/icons/svg/2476/2476197.svg" class="a5">
+                    <span id="counter1"></span>
+                    </a></div>
+                <div class=" white-text col s4 center"><a class="waves-effect waves-light btn modal-trigger a6" href="#modal3">{{userCredito}}<img src="./img/monedas.png" class="a7"></a></div>
+                {{else}}
+                <div class=" white-text col s4 center"><a class="waves-effect waves-light btn modal-trigger a2" href="#modal4">$0<img src="./img/plata.png" class="a3"></a></div>
+                <div class=" white-text col s4 center"><a class="waves-effect waves-light btn modal-trigger a4" href="#modal5"><img src="https://image.flaticon.com/icons/svg/2476/2476197.svg" class="a5"><span id="counter1">00:00:00</span></a></div>
+                <div class=" white-text col s4 center"><a class="waves-effect waves-light btn modal-trigger a6" href="#modal3">50<img src="./img/monedas.png" class="a7"></a></div>
+                {{/if}}
+            </div>
+        </nav>
+    </div>
+
+    <div class="no-pad-bot" id="index-banner">
+        <div class="container pad-top">
+
+            <div class="center">
+                <div class="center a8">
+                    <!-- Modal Structure -->
+                    <form action="/" method="POST">
+                    <div id="whenWhereQuery"></div>
+                    <div id="modal2" class="modal indigo darken-4 a9">
+                        <div class="modal-content indigo darken-4">
+                             
+                            <div class="input-field col s12 a10">
+                                <select name="when" id="cuando-select" onchange="whereSelected();">
+                                </select>
+                                <label><i class="material-icons tiny">timer</i> ¿Cuándo?</label>
+                            </div>
+                            <br><br>
+                            <div class="input-field col s12">
+                                <select name="where" id="donde-select" class="initialized" onchange="whereSelected();">
+                                    <option value="25,24,23,38,28,39">Buenos Aires</option>
+                                    <option value="25,24,38,39">Entre Rios</option>
+                                    <option value="25,24,53">Mendoza</option>
+                                    <option value="25,24,28">Cordoba</option>
+                                    <option value="25,24,42">Corrientes</option>
+                                    <option value="25,24,52">Chaco</option>
+                                    <option value="25,24,48">Santiago</option>
+                                    <option value="25,24,41">Neuquen</option>
+                                    <option value="25,24,49,53,28">San Luis</option>
+                                    <option value="25,24,51,50,55">Salta</option>
+                                    <option value="25,24,50">Jujuy</option>
+                                    <option value="25,24,55">Tucuman</option>
+                                    <option value="25,24,56">Chubut</option>
+                                    <option value="25,24,59">Formosa</option>
+                                    <option value="25,24,38,60">Misiones</option>
+                                    <option value="25,24,61">Catamarca</option>
+                                    <option value="25,24,62">San Juan</option>
+                                    <option value="25,24,63">La Rioja</option>
+                                </select>
+                                <label><i class="material-icons tiny">location_on</i> ¿Donde?</label>
+                            </div>
+                        </div>
+                        <div class="modal-footer indigo darken-4">
+                            <button type="submit" class="modal-close waves-effect waves-green btn-flat white-text">OK</button>
+                        </div>
+                        
+                    </div>
+                    </form>
+                </div>
+                <a class="waves-effect waves-light btn modal-trigger a11"  href="#modal7">▶ test</a>
+               {{#button 'playButton'}}
+                <div id="playButton1">
+                <!-- Modal Trigger -->
+                             {{#if userName }}
+                <a class="waves-effect waves-light btn modal-trigger a11"  href="#modal7">▶ JUGA GRATIS</a>
+                             {{else}}
+                <a class="waves-effect waves-light btn modal-trigger a11" href="#" onclick="facebookLogin()">▶ JUGA GRATIS</a>
+                                {{/if}}
+                </div>
+                {{/button}}
+                {{#button 'liveButton'}}
+                <p><a class="waves-effect waves-light btn modal-trigger a13" href="/jugadas">🔴 EN VIVO: {{#ifCond players '==' 1}} {{players}} Jugador<br><span class="a14">💰 PREMIO $1000</span></a></p>{{else}}{{players}} Jugadores<br><span class="a14">💰 PREMIO $1000</span></a></p>{{/ifCond}}
+            {{/button}}
+            {{#button 'winnersButton'}}
+                <p ><a id="winnersButtonP" class="waves-effect waves-light btn modal-trigger a100" href="/ganadores">🌃 Quiniela Nocturna<br><span class="a14">🏆 
+                    {{#ifCond ganadores '==' 1}}
+                    {{ganadores}}  ganador
+                    {{else}}
+                    {{ganadores}} ganadores
+                    {{/ifCond}}
+                    </span></a></p>
+            {{/button}}
+                <!-- Modal Structure -->
+
+                <div id="modal4" class="modal green a15">
+                    <div class="modal-content green white-text">
+                        <div class="modal-footer green white-text a16">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons a17">arrow_back</i>  </a>
+                        </div>
+                        <img src="./img/plata.png" class="a18">
+                        <h4 class="a19">Tu saldo</h4>
+
+                        <h4 class="a20">${{userSaldo}}</h4>
+                        <form action="/send/payment/account" method="POST">
+                            <p class="a21">Vincula tu cuenta de Mercado Pago para cobrar tu dinero.</p>
+                            <div class="input-field col s12">
+                                <input placeholder="Tu email de Mercado Pago" id="first_name" name="email" type="text" class="validate center a22">
+                            </div>
+                            <button type="submit" id="download-button" class="btn-large waves-effect waves-light a23">COBRAR</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="modal5" class="modal a24">
+                    <div class="modal-content center indigo darken-4">
+                        <div class="modal-footer indigo darken-4 a25">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons a26">arrow_back</i>  </a>
+                            <span class="a28">Nocturna 21:00Hs</span>
+                        </div>
+                        <h4 class="a30 a101">🕤<br> <span id="counter2">00:00:00</span></h4>
+                         <p class="a31">¡Todas las noches en la Quiniela Ciudad Nocturna! 🌃<br><br>Entregamos $1000 al Ganador vía MercadoPago 💰</p>
+                    </div>
+                </div>
+
+                {{#button 'playButton'}}
+                <div id="modal7" class="modal a34">
+                    <div class="modal-content indigo darken-4">
+                        <div class="row">
+                            <div class=" white-text col s4 center"><a class="waves-effect waves-light btn modal-trigger a35" href="#modal4">${{userSaldo}}<img src="./img/plata.png" class="a36"></a></div>
+                            <div class=" white-text col s4 center"><a class="waves-effect waves-light btn modal-trigger a4" href="#modal5"> <img src="https://image.flaticon.com/icons/svg/2476/2476197.svg" class="a5">
+                    <span id="counter3"></span></a></div>
+                            <div class=" white-text col s4 center"><a class="waves-effect waves-light btn modal-trigger a39" href="#modal3"><span id="userCredit">{{userCredito}}</span><img src="./img/monedas.png" class="a40"></a></div>
+                        </div>
+                        <div class="modal-footer indigo darken-4 a41">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons a42">arrow_back</i>  </a>
+                            <span class="a43">Nocturna 21:00Hs</span>
+                        </div>
+
+
+                        <p class="x a44">¡Tenes <span id="userCreditoJugada">{{userCredito}} </span>créditos para jugar! </p>
+
+ 
+                        <div class="a45">
+                            <p class="a46">¿QUÉ JUGAMOS?</p>
+                            
+                                <p>
+                                    <label>
+                                        <input class="with-gap" name="group3" type="radio" checked="">
+                                        <span class="a47">Ciudad Nocturna</span>
+                                    </label>
+                                </p>
+                                <div class="row">
+                                    <div class="input-field col s6 a151">
+                                        <input  id="numero" name="numero" inputmode="numeric" min="1" pattern="^[0-9]+" type="text" maxlength="4" step="1" class="validate a151" >
+                                        <label class="active" for="numero">Tu númer22oo</label>
+                                    </div>
+                                    <div class="input-field col s6 a151">
+                                        <input  maxlength="4"  onkeydown="return valideKey(event, this);"    name="importe" id="importe" inputmode="numeric" pattern="[0-9]*" type="text" step="1" class="validate a151">
+                                        <label class="active" for="importe">$ Importe</label>
+                                    </div> 
+                                    <button onclick="addBet()" class="btn waves-effect waves-light a50" >AGREGAR
+                                    </button>
+                                </div>                          
+                          
+                            <div class="row">
+                                <div class="col s12">
+                                    <table class="centered">
+                                        <thead>
+                                            <tr>
+                                                <th>Número</th>
+                                                <th>Quiniela</th>
+                                                <th>Importe</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody id="betNumbers">
+                                            
+
+                                            <tr>
+                                                <td>Total</td>
+                                                <td>-------------</td>
+                                                <td><span id="totalBet"> 00 </span><img src="./img/monedas.png" class="a51"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                     <form action="/user/newBet" id="createNewBet" method="POST">
+                                        <div id="betWrapper"></div>
+                                        <p><button id="betButtonSubmit" onsubmit="preloader()" class="btn waves-effect waves-light a52" type="submit" disabled="disabled">OK</button></p>
+                                    </form>                                    
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/button}}
+
+                <div id="modal3" class="modal orange a34">
+                    <div class="modal-content orange white-text">
+                        <div class="modal-footer orange white-text a65">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons a66">arrow_back</i>  </a>
+                        </div>
+                        <img src="./img/monedas.png" class="a67">
+                        <h4>Tu crédito</h4>
+                        <h4 class="a68">
+                            {{#if userCredito }}
+                            {{userCredito}}
+                            {{else}}
+                            50
+                            {{/if}}
+                        </h4>
+
+                        <p>Plan Gratuito</p>
+                        <p>50 Créditos diarios</p>
+                        <p class="a99">¿Querés ser PREMIUM? 👑</p>
+                        <p class="a98">2750 Créditos diaros durante un mes - $1500</p>
+                        <p class="a98">1250 Créditos diaros durante un mes - $750</p>
+                        <p class="a98">550 Créditos diaros durante un mes - $400</p>
+                        <p class="a98">100 Créditos diaros durante un mes - $75</p>
+                    </div>
+                </div>
+
+                <div id="modal10" class="modal indigo darken-4 a34">
+                    <div class="modal-content indigo darken-4 white-text">
+                        <div class="modal-footer indigo darken-4 white-text a65">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons a66">arrow_back</i>  </a>
+                        </div>
+                        {{#if userPicture}}
+                        <img id="userProfile[0]" src="{{userPicture}}" class="profilePicture a67" style=" border-radius: 100%;">
+                       <h4 id="profileName">{{#if userName}}{{userName}}{{else}}Invitado{{/if}}</h4>
+                        {{#ifCond userRol "==" "Admin"}}
+                        <a href="/admin/user/dash"  id="download-button" class="btn-large waves-effect waves-light a111">Ir al Dashboard</a>
+                        {{/ifCond}}
+                        <a href="#" onclick="facebookLogout()" id="download-button" class="btn-large waves-effect waves-light a111">Cerrar sesión</a>
+                        {{else}}
+                        <img id="userProfile[0]" src="./img/user-avatar-contact-portfolio-personal-portrait-profile-6-5623.png" class="profilePicture a67" style=" border-radius: 100%;">
+                        <h4 id="profileName">{{#if userName}}{{userName}}{{else}}Invitado{{/if}}</h4>
+                        <a  href="#" onclick="facebookLogin()" id="download-button" class="btn-large waves-effect waves-light a111">Inicia sesión con facebook</a>
+                        {{/if}}
+                        <p>Plan Gratuito: 50 créditos diarios</p>
+                    </div>
+                </div>
+
+                <a class="waves-effect waves-light btn modal-trigger a69" href="#modal2"><i class="material-icons a70">location_on</i> <span id="cuando-donde">HOY VIERNES EN Buenos Aires</span></a>
+                <div class="col s12 m12 l8 center row">
+                    <div class="col s4 m4">
+                        <p class="a white-text">HOY</p>
+                    </div>
+                    <div class="col s2 m2 p2">
+                        <p class="a white-text">PRIM</p>
+                    </div>
+                    <div class="col s2 m2 p2">
+                        <p class="a white-text">MATU</p>
+                    </div>
+                    <div class="col s2 m2 p2">
+                        <p class="a white-text">VESP</p>
+                    </div>
+                    <div class="col s2 m2 p2">
+                        <p class="a white-text">NOCT</p>
+                    </div>
+                    {{#each principal}}
+                        {{#ifCond id_loteria '==' '25'}} 
+                        <div class="col s12">
+                            <div class="col s4 m4">
+                                <h2 class="truncate b">Ciudad</h2>
+                            </div>
+                                <div class="col s2 m2 p2" style="">                    
+                                    <p class="c">{{primera}}</p>   
+                                </div>
+                                <div class="col s2 m2 p2">                        
+                                    <p class="c">{{matutina}}</p>
+                                </div>
+                                <div class="col s2 m2 p2">                        
+                                    <p class="c">{{vespertina}}</p>  
+                                </div>
+                                <div class="col s2 m2 p2">                        
+                                    <p class="c" id="nocturnaValue">{{nocturna}}</p>  
+                                </div> 
+                            </div>
+                        {{/ifCond}} 
+                    {{/each}}
+                    {{#each principal}}
+                        {{#ifCond  id_loteria '==' '24'}} 
+                            <div class="col s12">
+                                <div class="col s4 m4">
+                                    <h2 class="truncate b">Provincia</h2>
+                                </div>
+                                <div class="col s2 m2 p2" style="">                    
+                                    <p class="c">{{primera}}</p>   
+                                </div>
+                                <div class="col s2 m2 p2">                        
+                                    <p class="c">{{matutina}}</p>
+                                </div>
+                                <div class="col s2 m2 p2">                        
+                                    <p class="c">{{vespertina}}</p>  
+                                </div>
+                                <div class="col s2 m2 p2">                        
+                                    <p class="c">{{nocturna}}</p>  
+                                </div>                      
+                            </div>
+                        {{/ifCond}}
+                    {{/each}}
+                    {{#each principal}}
+                        {{#ifCond  id_loteria '==' '38'}}
+                        <div class="col s12">
+                            <div class="col s4 m4">
+                                <h2 class="truncate b">Santa Fe</h2>
+                            </div>
+                                <div class="col s2 m2 p2" style="">                    
+                                    <p class="c">{{primera}}</p>   
+                                </div>
+                                <div class="col s2 m2 p2">                        
+                                    <p class="c">{{matutina}}</p>
+                                </div>
+                                <div class="col s2 m2 p2">                        
+                                    <p class="c">{{vespertina}}</p>  
+                                </div>
+                                <div class="col s2 m2 p2">                        
+                                    <p class="c">{{nocturna}}</p>  
+                                </div> 
+                        </div>
+                        {{/ifCond}}
+                    {{/each}}
+                    {{#each principal}}
+                        {{#ifCond  id_loteria '==' '23'}} 
+                        <div class="col s12">
+                            <div class="col s4 m4">
+                                <h2 class="truncate b">Montevideo</h2>
+                            </div>   
+                                <div class="col s2 m2 p2" style="">                    
+                                    <p class="c">{{primera}}</p>   
+                                </div>
+                                <div class="col s2 m2 p2">                        
+                                    <p class="c">{{matutina}}</p>
+                                </div>
+                                <div class="col s2 m2 p2">                        
+                                    <p class="c">{{vespertina}}</p>  
+                                </div>
+                                <div class="col s2 m2 p2">                        
+                                    <p class="c">{{nocturna}}</p>  
+                                </div>
+                            </div>
+                        {{/ifCond}}
+                    {{/each}}
+                    {{#each principal}}
+                        {{#ifCond  id_loteria '==' '28'}}
+                        <div class="col s12">
+                            <div class="col s4 m4">
+                                <h2 class="truncate b">Cordoba</h2>
+                            </div>
+                                <div class="col s2 m2 p2" style="">                    
+                                    <p class="c">{{primera}}</p>   
+                                </div>
+                                <div class="col s2 m2 p2">                        
+                                    <p class="c">{{matutina}}</p>
+                                </div>
+                                <div class="col s2 m2 p2">                        
+                                    <p class="c">{{vespertina}}</p>  
+                                </div>
+                                <div class="col s2 m2 p2">                        
+                                    <p class="c">{{nocturna}}</p>  
+                                </div>
+                            </div>
+                        {{/ifCond}}
+                    {{/each}}
+                    {{#each principal}}
+                        {{#ifCond  id_loteria '==' '39'}}
+                            <div class="col s12">
+                                <div class="col s4 m4">
+                                    <h2 class="truncate b">Entre Rios</h2>
+                                </div>
+                                <div class="col s2 m2 p2" style="">                    
+                                    <p class="c">{{primera}}</p>   
+                                </div>
+                                <div class="col s2 m2 p2">                        
+                                    <p class="c">{{matutina}}</p>
+                                </div>
+                                <div class="col s2 m2 p2">                        
+                                    <p class="c">{{vespertina}}</p>  
+                                </div>
+                                <div class="col s2 m2 p2">                        
+                                    <p class="c">{{nocturna}}</p>  
+                                </div>
+                            </div>
+                            {{/ifCond}}
+                        {{/each}}
+                </div>
+                 {{#button 'playButton'}}
+                    <div class="row center" id="playButton2">
+                        {{#if userId}}
+                        <a href="#modal7" id="download-button" class="btn-large waves-effect waves-light modal-trigger a71">▶ JUGA GRATIS</a>
+                        {{else}}
+                        <a href="#" id="download-button" onclick="facebookLogin()" class="btn-large waves-effect waves-light a71">▶ JUGA GRATIS</a>
+                        {{/if}}
+                    </div>
+                {{/button}}
+                <br><br>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="section">
+                {{#each sorteo}}
+
+                <div class="row center">
+                    {{#each this}}
+                        {{#ifCond city '==' 'Ciudad'}}
+                        {{#ifCond value '>' 0}}
+                        <div class="col s12 m6 l3">
+                            <div class="fondotablero z-depth-2"><img class="rr" src="/img/dias.png" alt="">
+                                <h3 class="titulotablero">{{qType}}</h3>
+                                <h2 class="negrita">{{city}}</h2>
+                                <p class="center"><img class="sigbg{{#RandNumber}}{{/RandNumber}}" src="/img/emoticons/general_{{meaning_number}}.png" alt=""></p>
+                                <p class="sig truncate">{{meaning}}</p>
+                                <p class="significado">{{meaning_number}}</p>
+                                <table class="centered">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table class="centered">
+                                                    <tbody class="contenido-tablero">
+                                                        {{#each numbers}}
+                                                        <tr>
+                                                            {{#ifCond number '<='10}}
+                                                            {{#ifCond number '==='1}}
+                                                                <td class="fondo_posicion1">{{number}}</td>
+                                                                <td class="fondo_posicion">{{value}}</td>
+                                                            {{else}}
+                                                                <td class="fondo_posicion">{{number}}</td>
+                                                                <td class="">{{value}}</td>
+                                                            {{/ifCond}}
+                                                            {{/ifCond}}
+                                                        </tr>
+                                                        {{/each}}
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            
+                                            <td>
+                                                <table class="centered">
+                                                    <tbody class="contenido-tablero">
+                                                        {{#each numbers}}
+                                                        <tr>
+                                                            {{#ifCond number '>'10}}
+
+                                                                <td class="fondo_posicion">{{number}}</td>
+                                                                <td class="">{{value}}</td>
+
+                                                            {{/ifCond}}
+                                                        </tr>
+                                                        {{/each}}
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                </table>
+                                            
+                            </div>
+                        </div>
+                        {{/ifCond}}
+                        {{/ifCond}}
+                    {{/each}}
+
+                    {{#each this}}
+                        {{#ifCond city '==' 'Provincia'}}
+                        {{#ifCond value '>' 0}}
+                        <div class="col s12 m6 l3">
+                            <div class="fondotablero z-depth-2"><img class="rr" src="/img/dias.png" alt="">
+                                <h3 class="titulotablero">{{qType}}</h3>
+                                <h2 class="negrita">{{city}}</h2>
+                                <p class="center"><img class="sigbg{{#RandNumber}}{{/RandNumber}}" src="/img/emoticons/general_{{meaning_number}}.png" alt=""></p>
+                                <p class="sig truncate">{{meaning}}</p>
+                                <p class="significado">{{meaning_number}}</p>
+                                <table class="centered">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table class="centered">
+                                                    <tbody class="contenido-tablero">
+                                                        {{#each numbers}}
+                                                        <tr>
+                                                            {{#ifCond number '<='10}}
+                                                            {{#ifCond number '==='1}}
+                                                                <td class="fondo_posicion1">{{number}}</td>
+                                                                <td class="fondo_posicion">{{value}}</td>
+                                                            {{else}}
+                                                                <td class="fondo_posicion">{{number}}</td>
+                                                                <td class="">{{value}}</td>
+                                                            {{/ifCond}}
+                                                            {{/ifCond}}
+                                                        </tr>
+                                                        {{/each}}
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            
+                                            <td>
+                                                <table class="centered">
+                                                    <tbody class="contenido-tablero">
+                                                        {{#each numbers}}
+                                                        <tr>
+                                                            {{#ifCond number '>'10}}
+
+                                                                <td class="fondo_posicion">{{number}}</td>
+                                                                <td class="">{{value}}</td>
+
+                                                            {{/ifCond}}
+                                                        </tr>
+                                                        {{/each}}
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                </table>
+                                            
+                            </div>
+                        </div>
+                        {{/ifCond}}
+                        {{/ifCond}}
+                    {{/each}}
+
+                    {{#each this}}
+                        {{#ifCond city '==' 'Santa Fe'}}
+                        {{#ifCond value '>' 0}}
+                        <div class="col s12 m6 l3">
+                            <div class="fondotablero z-depth-2"><img class="rr" src="/img/dias.png" alt="">
+                                <h3 class="titulotablero">{{qType}}</h3>
+                                <h2 class="negrita">{{city}}</h2>
+                                <p class="center"><img class="sigbg{{#RandNumber}}{{/RandNumber}}" src="/img/emoticons/general_{{meaning_number}}.png" alt=""></p>
+                                <p class="sig truncate">{{meaning}}</p>
+                                <p class="significado">{{meaning_number}}</p>
+                                <table class="centered">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table class="centered">
+                                                    <tbody class="contenido-tablero">
+                                                        {{#each numbers}}
+                                                        <tr>
+                                                            {{#ifCond number '<='10}}
+                                                            {{#ifCond number '==='1}}
+                                                                <td class="fondo_posicion1">{{number}}</td>
+                                                                <td class="fondo_posicion">{{value}}</td>
+                                                            {{else}}
+                                                                <td class="fondo_posicion">{{number}}</td>
+                                                                <td class="">{{value}}</td>
+                                                            {{/ifCond}}
+                                                            {{/ifCond}}
+                                                        </tr>
+                                                        {{/each}}
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            
+                                            <td>
+                                                <table class="centered">
+                                                    <tbody class="contenido-tablero">
+                                                        {{#each numbers}}
+                                                        <tr>
+                                                            {{#ifCond number '>'10}}
+
+                                                                <td class="fondo_posicion">{{number}}</td>
+                                                                <td class="">{{value}}</td>
+
+                                                            {{/ifCond}}
+                                                        </tr>
+                                                        {{/each}}
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                </table>
+                                            
+                            </div>
+                        </div>
+                        {{/ifCond}}
+                        {{/ifCond}}
+                    {{/each}}
+
+                    {{#each this}}
+                        {{#ifCond city '==' 'Montevideo'}}
+                        {{#ifCond value '>' 0}}
+                        <div class="col s12 m6 l3">
+                            <div class="fondotablero z-depth-2"><img class="rr" src="/img/dias.png" alt="">
+                                <h3 class="titulotablero">{{qType}}</h3>
+                                <h2 class="negrita">{{city}}</h2>
+                                <p class="center"><img class="sigbg{{#RandNumber}}{{/RandNumber}}" src="/img/emoticons/general_{{meaning_number}}.png" alt=""></p>
+                                <p class="sig truncate">{{meaning}}</p>
+                                <p class="significado">{{meaning_number}}</p>
+                                <table class="centered">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table class="centered">
+                                                    <tbody class="contenido-tablero">
+                                                        {{#each numbers}}
+                                                        <tr>
+                                                            {{#ifCond number '<='10}}
+                                                            {{#ifCond number '==='1}}
+                                                                <td class="fondo_posicion1">{{number}}</td>
+                                                                <td class="fondo_posicion">{{value}}</td>
+                                                            {{else}}
+                                                                <td class="fondo_posicion">{{number}}</td>
+                                                                <td class="">{{value}}</td>
+                                                            {{/ifCond}}
+                                                            {{/ifCond}}
+                                                        </tr>
+                                                        {{/each}}
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            
+                                            <td>
+                                                <table class="centered">
+                                                    <tbody class="contenido-tablero">
+                                                        {{#each numbers}}
+                                                        <tr>
+                                                            {{#ifCond number '>'10}}
+
+                                                                <td class="fondo_posicion">{{number}}</td>
+                                                                <td class="">{{value}}</td>
+
+                                                            {{/ifCond}}
+                                                        </tr>
+                                                        {{/each}}
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                </table>
+                                            
+                            </div>
+                        </div>
+                        {{/ifCond}}
+                        {{/ifCond}}
+                    {{/each}}
+
+                    {{#each this}}
+                        {{#ifCond city '==' 'Córdoba'}}
+                        {{#ifCond value '>' 0}}
+                        <div class="col s12 m6 l3">
+                            <div class="fondotablero z-depth-2"><img class="rr" src="/img/dias.png" alt="">
+                                <h3 class="titulotablero">{{qType}}</h3>
+                                <h2 class="negrita">{{city}}</h2>
+                                <p class="center"><img class="sigbg{{#RandNumber}}{{/RandNumber}}" src="/img/emoticons/general_{{meaning_number}}.png" alt=""></p>
+                                <p class="sig truncate">{{meaning}}</p>
+                                <p class="significado">{{meaning_number}}</p>
+                                <table class="centered">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table class="centered">
+                                                    <tbody class="contenido-tablero">
+                                                        {{#each numbers}}
+                                                        <tr>
+                                                            {{#ifCond number '<='10}}
+                                                            {{#ifCond number '==='1}}
+                                                                <td class="fondo_posicion1">{{number}}</td>
+                                                                <td class="fondo_posicion">{{value}}</td>
+                                                            {{else}}
+                                                                <td class="fondo_posicion">{{number}}</td>
+                                                                <td class="">{{value}}</td>
+                                                            {{/ifCond}}
+                                                            {{/ifCond}}
+                                                        </tr>
+                                                        {{/each}}
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            
+                                            <td>
+                                                <table class="centered">
+                                                    <tbody class="contenido-tablero">
+                                                        {{#each numbers}}
+                                                        <tr>
+                                                            {{#ifCond number '>'10}}
+
+                                                                <td class="fondo_posicion">{{number}}</td>
+                                                                <td class="">{{value}}</td>
+
+                                                            {{/ifCond}}
+                                                        </tr>
+                                                        {{/each}}
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                </table>
+                                            
+                            </div>
+                        </div>
+                        {{/ifCond}}
+                        {{/ifCond}}
+                    {{/each}}
+
+                    {{#each this}}
+                        {{#ifCond city '==' 'Entre Ríos'}}
+                        {{#ifCond value '>' 0}}
+                        <div class="col s12 m6 l3">
+                            <div class="fondotablero z-depth-2"><img class="rr" src="/img/dias.png" alt="">
+                                <h3 class="titulotablero">{{qType}}</h3>
+                                <h2 class="negrita">{{city}}</h2>
+                                <p class="center"><img class="sigbg{{#RandNumber}}{{/RandNumber}}" src="/img/emoticons/general_{{meaning_number}}.png" alt=""></p>
+                                <p class="sig truncate">{{meaning}}</p>
+                                <p class="significado">{{meaning_number}}</p>
+                                <table class="centered">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table class="centered">
+                                                    <tbody class="contenido-tablero">
+                                                        {{#each numbers}}
+                                                        <tr>
+                                                            {{#ifCond number '<='10}}
+                                                            {{#ifCond number '==='1}}
+                                                                <td class="fondo_posicion1">{{number}}</td>
+                                                                <td class="fondo_posicion">{{value}}</td>
+                                                            {{else}}
+                                                                <td class="fondo_posicion">{{number}}</td>
+                                                                <td class="">{{value}}</td>
+                                                            {{/ifCond}}
+                                                            {{/ifCond}}
+                                                        </tr>
+                                                        {{/each}}
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            
+                                            <td>
+                                                <table class="centered">
+                                                    <tbody class="contenido-tablero">
+                                                        {{#each numbers}}
+                                                        <tr>
+                                                            {{#ifCond number '>'10}}
+
+                                                                <td class="fondo_posicion">{{number}}</td>
+                                                                <td class="">{{value}}</td>
+
+                                                            {{/ifCond}}
+                                                        </tr>
+                                                        {{/each}}
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                </table>
+                                            
+                            </div>
+                        </div>
+                        {{/ifCond}}
+                        {{/ifCond}}
+                    {{/each}}
+
+                    
+                </div>
+                {{/each}}
+            </div>
+            <br><br>
+        </div>
+</div>
+
+
+<div id="demo"></div>
+
+<script>
+    (function(){
+        document.getElementById('numero').addEventListener('change',function (e){
+            //alert('hiciste click'+e)
+            alert(
+
+            e.altKey+" "+
+
+e.bubbles+" "+
+
+e.cancelBubble+" "+
+
+e.cancelable+" "+
+
+e.charCode+" "+
+
+e.code+" "+
+
+e.composed+" "+
+
+e.ctrlKey+" "+
+
+e.currentTarget+" "+
+
+e.defaultPrevented+" "+
+e.detail+" "+
+
+e.eventPhase+" "+
+
+e.isComposing+" "+
+
+e.isTrusted+" "+
+
+e.key+" "+
+
+e.keyCode+" "+
+
+e.layerX+" "+
+
+e.layerY+" "+
+
+e.location+" "+
+
+e.metaKey+" "+
+
+
+e.rangeOffset+" "+
+
+e.rangeParent+" "+
+
+e.repeat+" "+
+
+e.returnValue+" "+
+
+e.shiftKey+" "+
+
+e.timeStamp+" "+
+
+e.type+" "+e.which)
+            //alert(e.which)
+        })
+    }())
+</script>

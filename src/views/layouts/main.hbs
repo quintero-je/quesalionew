@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>&iquest;Qu&eacute; Sali&oacute;? EN LA QUINIELA PRIMERA - MATUTINA - VESPERTINA - NOCTURNA</title>
+    
+    <!-- Animacion CSS Preloader -->
+    <style>
+        .fadein{
+            opacity: 0;
+            transition: opacity 1s ease-in;
+            -webkit-transition: opacity 2s; /* Safari */
+        }
+        .fadeout{
+            opacity: 1;
+            transition: opacity 1s ease-in;
+            -webkit-transition: opacity 2s; /* Safari */
+        }
+        .centrado-spinner {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+        }
+        .loader {
+            width: 70px;
+            height: 70px;
+            border: 10px solid #eee;
+            border-top: 10px solid #3498db;
+            border-radius: 50%;
+            animation:spin 2s linear infinite;
+            margin: -35px 0 0 -35px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        } 
+    </style>
+    <!--/ Animacion CSS Preloader -->
+    
+    <!--/ JS  -->
+    <script id="remove_script_on_set">
+        sessionStorage.setItem("userAuth", "{{#if userId}}1{{else}}0{{/if}}");
+        sessionStorage.setItem("city", "{{#if city}}{{city}}{{else}}Buenos Aires{{/if}}");
+        sessionStorage.setItem("day", "{{#if day}}{{day}}{{else}}0{{/if}}");
+        sessionStorage.setItem("nextSorteo", '{{nextSorteo}}');
+        sessionStorage.setItem("credito", '{{userCredito}}');
+        sessionStorage.setItem("counterBet", 0);
+        sessionStorage.setItem("betImport", 0);
+        sessionStorage.setItem("playButtons", '{{play}}')
+        document.getElementById("remove_script_on_set").remove();
+    </script>
+    <script>
+        function preloader() {let pre = setTimeout(showPage, 500)}
+        function showPage() {
+            document.getElementById("preload-spinner").style.opacity = "0";
+            document.getElementById("loadedContent").style.opacity='1';
+        }
+    </script>
+    <!--/ JS  -->
+    <!-- CSS  -->
+    <link href="/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--/ CSS  -->
+</head>
+
+<body onload="preloader()">
+    
+    <div id="preload-spinner" class="loader centrado-spinner fadeout"></div>
+    <div id="loadedContent" class="fadein" >
+    {{> navigation}}
+    {{{ body }}}
+    {{> footer }}
+    </div>
+    
+    <script src="/js/materialize.min.js"></script>
+    <script src="/js/moment.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+             M.AutoInit();
+        });
+    </script>
+
+    {{> messages }}
+    {{> errors }}
+</body>
+
+</html>

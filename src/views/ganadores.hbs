@@ -1,0 +1,238 @@
+<div class="container">
+
+    <div class="indigo darken-4 a54">
+        <a href="/" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons a55">arrow_back</i>  </a>
+        <span class="a56">Nocturna 21:00Hs</span>
+    </div>
+
+    <div class="center">
+
+        {{#ifCond winners.winnersNro "==" 0}}
+        <p class="white-text a76">Resultado: 🌆 Ciudad Nocturna: {{winners.numero}}</p>
+        <p class="white-text a76">🏆 0 Ganadores <br>Lo sentimos, no hubo Ganadores. </p>
+        {{/ifCond}}
+
+        <!-- Modal Trigger -->
+    {{#ifCond winners.winnersNro '>'0}}
+        <p class="white-text a76">Resultado: 📖 Ciudad Nocturna: {{winners.numero}}</p>
+        <p class="white-text a76">🎉 ¡Felicitaciones {{winners.winnerPpal.0.userName}}!<br>Ganó $1000 vía MercadoPago<br>
+        {{#ifCond winners.winnersNro '>' 1}}
+        Obtuvo el mayor puntaje entre los {{winners.winnersNro}} ganadores.
+        {{/ifCond}}
+        {{#ifCond winners.winnersNro '==' 1}}
+        Eres el &uacute;nico ganador!
+        {{/ifCond}}
+        </p>
+
+        <div class="row">
+            <div class="col s12">
+
+
+            {{#each winners.winners}}
+                       
+                <div class="a90">
+                    <p class="a91"> <span class="a107">GANADOR</span>
+                        <img src="{{pictureUrl}}" alt="{{userName}}" class="circle a73 a92 a102"><span class="a93 green-text ">🏆 {{userName}}</span><br><span class="a95  datePlays" data-date="{{plays.0.date}}">{{plays.0.date}}</span><br> </p>
+
+                    <div class="row">
+                        <div class="col s12">
+                            <p class="a93">NOCTURNA</p>
+                            <table class="centered a94">
+                                <thead>
+                                    <tr>
+                                        <th>Número</th>
+                                        <th>Quiniela</th>
+                                        <th>Importe</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                {{#each plays}}
+
+                                    <tr>
+                                        <td>{{numero}}</td>
+                                        <td>Ciudad</td>
+                                        <td><span class="importeSumar">{{importe}}</span>  <img src="./img/monedas.png" class="a51"></td>
+                                    </tr>
+                                {{/each}}
+
+                                    <tr>
+                                        <td>Total</td>
+                                        <td>-------------</td>
+                                        <td><span id="totalImporteGanador"></span> <img src="./img/monedas.png" class="a51"></td>
+                                    </tr>
+                                    <tr class="b100">
+                                        <td>PREMIO</td>
+                                        <td>CRÉDITOS</td>
+                                        <td>{{credito}} <img src="./img/monedas.png" class="a51"></td>
+                                    </tr>
+
+                                    {{#if winner}}
+                                    <tr class="b100">
+                                        <td>PREMIO</td>
+                                        <td>SALDO</td>
+                                        <td>1000 <img src="./img/plata.png" class="a51"></td>
+                                    </tr>
+                                {{/if}}
+                                </tbody>
+
+                            </table>
+                             {{#if winner}}
+                            <p class="a93 green-text a106">BOLETA GANADORA</p>
+                            {{/if}}
+                        </div>
+                    
+
+                    </div>
+                </div>
+
+                   {{/each}}
+
+                <div class="a103">
+
+                    <div class="row">
+                        <div class="col s12">
+                            <p class="a93 green-text">🏆 
+                                {{#ifCond winners.winnersNro '==' 1}}
+                                1 GANADOR
+                                {{/ifCond}}
+                                {{#ifCond winners.winnersNro '>' 1}}
+                                {{winners.winnersNro}} GANADORES
+                                {{/ifCond}}
+                                
+                                </p>
+                            <table class="centered">
+                                <tbody>
+                                    {{#each winners.winners}}
+                                    {{#if winner}}
+                                    <tr class="a105">
+                                        <td>{{nro}}&nbsp;<img src="{{pictureUrl}}" alt="" class="" style="
+                                        width: 40px;
+                                        border-radius: 100px;
+                                        vertical-align: -15px;"></td>
+                                        <td>{{userName}}</td>
+                                        <td class="a104">{{credito}}<img src="./img/monedas.png" class="a51"></td>
+                                    </tr>
+                                    {{else}}
+                                    
+                                    <tr>
+                                        <td>{{nro}}<img src="{{pictureUrl}}" alt="" class="" style="    width: 40px;    border-radius: 100px;    vertical-align: -15px;"></td>
+                                        <td>{{userName}}</td>
+                                        <td class="a104">{{credito}} <img src="./img/monedas.png" class="a51"></td>
+                                    </tr>
+                                    {{/if}}
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Modal Structure -->
+
+                        <div id="modal3" class="modal orange a34" tabindex="0">
+                            <div class="modal-content orange white-text">
+                                <div class="modal-footer orange white-text a65">
+                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons a66">arrow_back</i>  </a>
+                                </div>
+                                <img src="./img/monedas.png" class="a67">
+                                <h4>Tu crédito</h4>
+                                <h4 class="a68">100</h4>
+
+                                <p>Plan Gratuito</p>
+                                <p>100 Créditos diarios</p>
+                                <p class="a99">¿Querés ser PREMIUM?</p>
+                                <p class="a98">2750 Créditos diaros durante un mes - $1499</p>
+                                <p class="a98">1250 Créditos diaros durante un mes - $749</p>
+                                <p class="a98">550 Créditos diaros durante un mes - $399</p>
+                                <p class="a98">175 Créditos diaros durante un mes - $149</p>
+                            </div>
+
+                        </div>
+                        
+                        <div id="modal4" class="modal green a15">
+                            <div class="modal-content green white-text">
+                                <div class="modal-footer green white-text a16">
+                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons a17">arrow_back</i>  </a>
+                                </div>
+                                <img src="./img/plata.png" class="a18">
+                                <h4 class="a19">Tu saldo</h4>
+
+                                <h4 class="a20">$0,00</h4>
+
+                                <p class="a21">Vincula tu cuenta de Mercado Pago para cobrar tu dinero.</p>
+                                <div class="input-field col s12">
+                                    <input placeholder="Tu email de Mercado Pago" id="first_name" type="text" class="validate center a22">
+
+                                </div>
+                                <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light a23">COBRAR</a>
+                            </div>
+
+                        </div>
+
+                        <div id="modal5" class="modal a24">
+                            <div class="modal-content indigo darken-4">
+                                <div class="modal-footer indigo darken-4 a25">
+                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons a26">arrow_back</i>  </a>
+                                    <span class="a28">Nocturna 21:00Hs</span>
+                                </div>
+
+
+                                <img src="https://image.flaticon.com/icons/svg/465/465897.svg" class="a29">
+                                <h4 class="a30">00:04:21</h4>
+
+
+
+                                <p class="a31">HOY En la Quiniela Ciudad - Nocturna.<br>El mayor puntaje recibe $1000 vía MercadoPago</p>
+                                <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light a32"><i class="material-icons a33">play_circle_outline</i> JUGAR GRATIS</a>
+                            </div>
+
+                        </div>
+
+                        <div id="modal10" class="modal a34">
+                            <div class="modal-content indigo darken-4">
+                                <div class="row">
+                                    <div class=" white-text col s4 center"><a class="waves-effect waves-light btn modal-trigger a35" href="#modal4">$0,00<img src="./img/plata.png" class="a36"></a></div>
+                                    <div class=" white-text col s4 center"><a class="waves-effect waves-light btn modal-trigger a37" href="#modal5">04:32:32<img src="https://image.flaticon.com/icons/svg/2476/2476197.svg" class="a38"></a></div>
+                                    <div class=" white-text col s4 center"><a class="waves-effect waves-light btn modal-trigger a39" href="#modal3">100<img src="./img/monedas.png" class="a40"></a></div>
+                                </div>
+                                <div class="modal-footer indigo darken-4 a41">
+                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat"><i class="large material-icons a42">arrow_back</i>  </a>
+                                    <span class="a43">Jugadas al 32</span>
+                                </div>
+
+
+
+
+
+
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/ifCond}}
+
+    </div>
+</div>
+
+<script>
+    widow.onload(
+    function() {
+    let d = document.getElementsByClassName('a95 datePlays')
+    for (let i = 0; i < d.length; i++) {
+        let date = new moment(d[i].innerHTML).format("DD-MM-YYYY, h:mm:ss a")
+        d[i].innerHTML = date
+    }
+
+    let t = document.getElementsByClassName('importeSumar');
+    let total = 0;
+    for (let i = 0; i < t.length; i++) {
+        total = total + Number(t[i].innerHTML)
+    }
+    document.getElementById('totalImporteGanador').innerHTML = total
+
+})
+</script>
