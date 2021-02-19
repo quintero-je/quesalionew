@@ -15,8 +15,8 @@ const { passportIds } = require('./config/config');
 const CronJobs = require('./models/CronJobs');
 
 // Initializations
-const key = fs.readFileSync('./key.pem');
-const cert = fs.readFileSync('./cert.pem');
+//const key = fs.readFileSync('./key.pem');
+//const cert = fs.readFileSync('./cert.pem');
 
 //const key = fs.readFileSync('/home/taek/quesalionew/src/key.pem');
 //const cert = fs.readFileSync('/home/taek/quesalionew/src/cert.pem');
@@ -94,11 +94,11 @@ require('./helpers/cronJobs');
 
 // Server is listening
 
-const server = https.createServer({ key: key, cert: cert }, app);
+/*const server = https.createServer({ key: key, cert: cert }, app);
 server.listen(app.get('port'), () => {
     console.log('Server on port', app.get('port'));
-});
-
-/*app.listen(app.get('port'), () => {
-    console.log('Server on port', app.get('port'));
 });*/
+
+app.listen(app.get('port'), () => {
+    console.log('Server on port', app.get('port'));
+});
